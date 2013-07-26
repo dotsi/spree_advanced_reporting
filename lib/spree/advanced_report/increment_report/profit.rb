@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Spree::AdvancedReport::IncrementReport::Profit < Spree::AdvancedReport::IncrementReport
   def name
     "Profit"

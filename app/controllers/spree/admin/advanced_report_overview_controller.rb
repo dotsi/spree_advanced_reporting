@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Spree::Admin::AdvancedReportOverviewController < Spree::Admin::BaseController
   def index
     @reports = Spree::Admin::ReportsController::ADVANCED_REPORTS

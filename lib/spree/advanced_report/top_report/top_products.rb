@@ -1,10 +1,11 @@
+# encoding: utf-8
 class Spree::AdvancedReport::TopReport::TopProducts < Spree::AdvancedReport::TopReport
   def name
-    "Top Selling Products by Revenue"
+    "Najbolje prodajani izdelki"
   end
 
   def description
-    "Top selling products, calculated by revenue"
+    "Najbolje prodajani izdelki po prometu"
   end
 
   def initialize(params, limit)
@@ -24,11 +25,11 @@ class Spree::AdvancedReport::TopReport::TopProducts < Spree::AdvancedReport::Top
       end
     end
 
-    self.ruportdata = Table(%w[name Units Revenue])
+    self.ruportdata = Table(%w[name Kosi Promet])
     data.inject({}) { |h, (k, v) | h[k] = v[:revenue]; h }.sort { |a, b| a[1] <=> b [1] }.reverse[0..limit].each do |k, v|
-      ruportdata << { "name" => data[k][:name], "Units" => data[k][:units], "Revenue" => data[k][:revenue] } 
+      ruportdata << { "name" => data[k][:name], "Kosi" => data[k][:units], "Promet" => data[k][:revenue] } 
     end
-    ruportdata.replace_column("Revenue") { |r| "$%0.2f" % r.Revenue }
-    ruportdata.rename_column("name", "Product Name")
+    ruportdata.replace_column("Promet") { |r| "$%0.2f" % r.Promet }
+    ruportdata.rename_column("name", "Izdelek")
   end
 end

@@ -1,14 +1,15 @@
+# encoding: utf-8
 class Spree::AdvancedReport::IncrementReport::Units < Spree::AdvancedReport::IncrementReport
   def name
-    "Units Sold"
+    "Prodane enote"
   end
 
   def column
-    "Units"
+    "Enote"
   end
 
   def description
-    "Total units sold in orders, a sum of the item quantities per order or per item"
+    "Skupno prodano število enot na naročilo ali izdelek"
   end
 
   def initialize(params)

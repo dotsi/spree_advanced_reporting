@@ -1,14 +1,15 @@
+# encoding: utf-8
 module Spree
   class AdvancedReport
     include Ruport
     attr_accessor :orders, :product_text, :date_text, :taxon_text, :ruportdata, :data, :params, :taxon, :product, :product_in_taxon, :unfiltered_params
 
     def name
-      "Base Advanced Report"
+      "Napredno poročilo"
     end
 
     def description
-      "Base Advanced Report"
+      "Napredno poročilo"
     end
 
     def initialize(params)
@@ -54,26 +55,26 @@ module Spree
       end
 
       if self.product
-        self.product_text = "Product: #{self.product.name}<br />"
+        self.product_text = "Izdelek: #{self.product.name}<br />"
       end
       if self.taxon
-        self.taxon_text = "Taxon: #{self.taxon.name}<br />"
+        self.taxon_text = "Takson: #{self.taxon.name}<br />"
       end
 
       # Above searchlogic date settings
-      self.date_text = "Date Range:"
+      self.date_text = "Med datumi:"
       if self.unfiltered_params
         if self.unfiltered_params[:completed_at_gt] != '' && self.unfiltered_params[:completed_at_lt] != ''
-          self.date_text += " From #{self.unfiltered_params[:completed_at_gt]} to #{self.unfiltered_params[:completed_at_lt]}"
+          self.date_text += " Od #{self.unfiltered_params[:completed_at_gt]} do #{self.unfiltered_params[:completed_at_lt]}"
         elsif self.unfiltered_params[:completed_at_gt] != ''
-          self.date_text += " After #{self.unfiltered_params[:completed_at_gt]}"
+          self.date_text += " Po #{self.unfiltered_params[:completed_at_gt]}"
         elsif self.unfiltered_params[:completed_at_lt] != ''
-          self.date_text += " Before #{self.unfiltered_params[:completed_at_lt]}"
+          self.date_text += " Pred #{self.unfiltered_params[:completed_at_lt]}"
         else
-          self.date_text += " All"
+          self.date_text += " Vse"
         end
       else
-        self.date_text += " All"
+        self.date_text += " Vse"
       end
     end
 

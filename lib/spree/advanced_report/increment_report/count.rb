@@ -1,14 +1,15 @@
+# encoding: utf-8
 class Spree::AdvancedReport::IncrementReport::Count < Spree::AdvancedReport::IncrementReport
   def name
-    "Order Count"
+    "Število naročil"
   end
 
   def column
-    "Count"
+    "Število"
   end
 
   def description
-    "Total number of completed orders"
+    "Skupno število zaključenih naročil"
   end
 
   def initialize(params)

@@ -1,10 +1,11 @@
+# encoding: utf-8
 class Spree::AdvancedReport::TopReport::TopCustomers < Spree::AdvancedReport::TopReport
   def name
-    "Top Customers"
+    "Top stranke"
   end
 
   def description
-    "Top purchasing customers, calculated by revenue"
+    "Najboljše stranke po skupnem prometu"
   end
 
   def initialize(params, limit)
@@ -22,11 +23,11 @@ class Spree::AdvancedReport::TopReport::TopCustomers < Spree::AdvancedReport::To
       end
     end
 
-    self.ruportdata = Table(%w[email Units Revenue])
+    self.ruportdata = Table(%w[email Enote Promet])
     data.inject({}) { |h, (k, v) | h[k] = v[:revenue]; h }.sort { |a, b| a[1] <=> b [1] }.reverse[0..limit].each do |k, v|
-      ruportdata << { "email" => data[k][:email], "Units" => data[k][:units], "Revenue" => data[k][:revenue] } 
+      ruportdata << { "email" => data[k][:email], "Enote" => data[k][:units], "Promet" => data[k][:revenue] } 
     end
-    ruportdata.replace_column("Revenue") { |r| "$%0.2f" % r.Revenue }
-    ruportdata.rename_column("email", "Customer Email")
+    ruportdata.replace_column("Promet") { |r| "$%0.2f" % r.Promet }
+    ruportdata.rename_column("email", "Email stranke")
   end
 end

@@ -1,0 +1,12 @@
+sl:
+  adv_report:
+    revenue: "Promet"
+    units: "Prodane enote"
+    profit: "Profit"
+    count: "Število naročil"
+    top_products: "Top izdelki"
+    top_customers: "Top stranke"
+    submit: "Pošlji"
+    geo_revenue: "Geo Promet"
+    geo_units: "Geo prodane enote"
+    geo_profit: "Geo Profit"

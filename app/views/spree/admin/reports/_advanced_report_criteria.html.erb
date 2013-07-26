@@ -1,16 +1,18 @@
 <div id="advanced_report_search">
   <%= form_for :search do |s| %>
     <% if @stores -%>
-        Store:<br /><%= collection_select(:search, :store_id, @stores, :id, :name, { :include_blank => 'All' } ) %><br />
+        Store:<br /><%= collection_select(:search, :store_id, @stores, :id, :name, { :include_blank => 'Vsi' } ) %><br />
         <br>
 
     <% end -%>
 
-    <div id="taxon_products">
+    <div id="taxon_products" class="four columns">
     <% if @taxons -%>
-        <%=t "taxons"%>: <%= collection_select(:advanced_reporting, :taxon_id, @taxons, :id, :name, { :include_blank => 'All' } ) %>
+        <%=t "taxons"%>: <%= collection_select(:advanced_reporting, :taxon_id, @taxons, :id, :name, { :include_blank => 'Vsi' } , :class => "select2 fullwidth") %>
     <% end -%>
-    <%=t :products%>: <%= collection_select(:advanced_reporting, :product_id, @products, :id, :name, { :include_blank => 'All' } ) %><br />
+    </div>
+    <div id="product_products" class="four columns">
+    <%=t :products%>: <%= collection_select(:advanced_reporting, :product_id, @products, :id, :name, { :include_blank => 'Vsi' }  , :class => "select2 fullwidth") %><br />
     </div>
 
     <%= t("date_range") %>:

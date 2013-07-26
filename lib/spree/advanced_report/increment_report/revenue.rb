@@ -1,14 +1,15 @@
+# encoding: utf-8
 class Spree::AdvancedReport::IncrementReport::Revenue < Spree::AdvancedReport::IncrementReport
   def name
-    "Revenue"
+    "Promet"
   end
 
   def column
-    "Revenue"
+    "Promet"
   end
 
   def description
-    "Total order revenue, where revenue is the sum of order item prices, excluding shipping and tax"
+    "Skupni promet samo z izdelki"
   end
 
   def initialize(params)
@@ -41,6 +42,6 @@ class Spree::AdvancedReport::IncrementReport::Revenue < Spree::AdvancedReport::I
   end
 
   def format_total
-    '$' + ((self.total*100).round.to_f / 100).to_s
+    ((self.total*100).round.to_f / 100).to_s + ' €'
   end
 end

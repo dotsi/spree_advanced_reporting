@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Spree::AdvancedReport::IncrementReport < Spree::AdvancedReport
   INCREMENTS = [:daily, :weekly, :monthly, :quarterly, :yearly]
   attr_accessor :increments, :dates, :total, :all_data
@@ -12,24 +13,24 @@ class Spree::AdvancedReport::IncrementReport < Spree::AdvancedReport
     self.dates = {
       :daily => {
         :date_bucket => "%F",
-        :date_display => "%m-%d-%Y",
-        :header_display => 'Daily',
+        :date_display => "%d.%m.%Y",
+        :header_display => 'Dnevi',
       },
       :weekly => {
-        :header_display => 'Weekly'
+        :header_display => 'Tedni'
       },
       :monthly => {
-        :date_bucket => "%Y-%m",
+        :date_bucket => "%m-%Y",
         :date_display => "%B %Y",
-        :header_display => 'Monthly',
+        :header_display => 'Meseci',
       },
       :quarterly => {
-        :header_display => 'Quarterly'
+        :header_display => 'Četrtletja'
       },
       :yearly => {
         :date_bucket => "%Y",
         :date_display => "%Y",
-        :header_display => 'Yearly',
+        :header_display => 'Leta',
       }
     }
   end
