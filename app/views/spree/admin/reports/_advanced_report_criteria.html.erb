@@ -11,11 +11,11 @@
         <%=t "taxons"%>: <%= collection_select(:advanced_reporting, :taxon_id, @taxons, :id, :name, { :include_blank => 'Vsi' } , :class => "select2 fullwidth") %>
     <% end -%>
     </div>
-    <div id="product_products" class="four columns">
+    <!--<div id="product_products" class="four columns">
      <% if !@products.empty? -%>
-    <%=t :products%>: <%= collection_select(:advanced_reporting, :product_id, @products, :id, :name, { :include_blank => 'Vsi' }  , :class => "select2 fullwidth") %><br />
+    <%=t :products%>: <%# collection_select(:advanced_reporting, :product_id, @products, :id, :name, { :include_blank => 'Vsi' }  , :class => "select2 fullwidth") %><br />
     <% end %>
-    </div>
+    </div>-->
 
     <%= t("date_range") %>:
     <div class="yui-g date-range-filter">
