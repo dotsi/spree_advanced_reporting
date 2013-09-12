@@ -12,7 +12,9 @@
     <% end -%>
     </div>
     <div id="product_products" class="four columns">
+     <% if !@products.empty? -%>
     <%=t :products%>: <%= collection_select(:advanced_reporting, :product_id, @products, :id, :name, { :include_blank => 'Vsi' }  , :class => "select2 fullwidth") %><br />
+    <% end %>
     </div>
 
     <%= t("date_range") %>:
