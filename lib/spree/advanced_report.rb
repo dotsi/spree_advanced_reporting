@@ -21,7 +21,7 @@ module Spree
       params[:search] ||= {}
       if params[:search][:completed_at_gt].blank?
         if (Order.count > 0) #&& Order.minimum(:completed_at)
-          params[:search][:completed_at_gt] = (Tme.now - 30.days).beginning_of_day #Order.minimum(:completed_at).beginning_of_day
+          params[:search][:completed_at_gt] = (Time.now - 30.days).beginning_of_day #Order.minimum(:completed_at).beginning_of_day
         end
       else
         params[:search][:completed_at_gt] = Time.zone.parse(params[:search][:completed_at_gt]).beginning_of_day rescue ""
