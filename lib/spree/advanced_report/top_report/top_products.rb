@@ -14,13 +14,25 @@ class Spree::AdvancedReport::TopReport::TopProducts < Spree::AdvancedReport::Top
     orders.each do |order|
       order.line_items.each do |li|
         if !li.product.nil?
-          data[li.product.id] ||= {
-            :name => li.product.name.to_s,
-            :revenue => 0,
-            :units => 0
-          }
-          data[li.product.id][:revenue] += li.quantity*li.price 
-          data[li.product.id][:units] += li.quantity
+
+          rev = order.total
+          if !self.taxon.nil?
+            if li.product.taxons.include?(self.taxon)
+              data[li.product.id] ||= {
+                :name => li.product.name.to_s,
+                :revenue => li.quantity*li.price,
+                :units => li.quantity
+              }
+            end
+          else
+            data[li.product.id] ||= {
+              :name => li.product.name.to_s,
+              :revenue => 0,
+              :units => 0
+            }
+            data[li.product.id][:revenue] += li.quantity*li.price 
+            data[li.product.id][:units] += li.quantity
+          end
         end
       end
     end
@@ -29,7 +41,7 @@ class Spree::AdvancedReport::TopReport::TopProducts < Spree::AdvancedReport::Top
     data.inject({}) { |h, (k, v) | h[k] = v[:revenue]; h }.sort { |a, b| a[1] <=> b [1] }.reverse[0..limit].each do |k, v|
       ruportdata << { "name" => data[k][:name], "Kosi" => data[k][:units], "Promet" => data[k][:revenue] } 
     end
-    ruportdata.replace_column("Promet") { |r| "$%0.2f" % r.Promet }
+    ruportdata.replace_column("Promet") { |r| "%0.2f €" % r.Promet }
     ruportdata.rename_column("name", "Izdelek")
   end
 end
