@@ -18,7 +18,7 @@ Spree::Admin::ReportsController.class_eval do
    
   def basic_report_setup
     @reports = ADVANCED_REPORTS
-    @products = Spree::Product.all
+    @products = []#Spree::Product.all
     @taxons = Spree::Taxon.all
     if defined?(MultiDomainExtension)
       @stores = Store.all
@@ -96,12 +96,12 @@ Spree::Admin::ReportsController.class_eval do
   end
 
   def top_products
-    @report = Spree::AdvancedReport::TopReport::TopProducts.new(params, 20)
+    @report = Spree::AdvancedReport::TopReport::TopProducts.new(params, 200)
     base_report_top_render("top_products")
   end
 
   def top_customers
-    @report = Spree::AdvancedReport::TopReport::TopCustomers.new(params, 20)
+    @report = Spree::AdvancedReport::TopReport::TopCustomers.new(params, 50)
     base_report_top_render("top_customers")
   end
 
